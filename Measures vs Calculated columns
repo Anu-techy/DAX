@@ -1,0 +1,21 @@
+Calculated Column : A calculated column is a new column added to a table using DAX. It is:
+
+Evaluated row by row (uses row context)
+
+Physically stored in the data model
+
+Useful for creating categorical fields for filtering, grouping, or slicing visuals
+
+Evaluated once during data refresh, but increases model size
+
+
+Measure : A measure is a calculation defined in DAX that:
+
+Is not stored in the model — evaluated only when used in a visual
+
+Is calculated at query time (on the fly)
+
+Uses filter context — responds dynamically to slicers, filters, and visuals
+
+Is more efficient for aggregations and KPIs
+
