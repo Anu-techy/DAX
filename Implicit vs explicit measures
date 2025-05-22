@@ -1,0 +1,31 @@
+Implicit measures are auto-generated simple basic aggregations (like sum, average, count) that are created automatically 
+when you drag a field into a value area of a visual. They can't handle complex logic such as :
+
+Time intelligence (e.g., running totals, period-to-date calculations)
+
+Custom conditions (e.g., sales above a certain threshold)
+
+They are useful for quick exploration but fall short when deeper insights or custom business rules are needed.
+
+Explicit Measure: 
+
+DAX allows you to build explicit measures — reusable, powerful expressions with custom logic tailored to specific business needs.
+
+Key Advantages of DAX:
+
+Advanced Calculations: You can create measures like:
+
+            Profit Margin = (Revenue - Cost) / Revenue
+
+            YoY Growth = ([This Year] - [Last Year]) / [Last Year]
+
+Time Intelligence: Easily perform time-based analysis using functions like:
+
+            TOTALYTD(), SAMEPERIODLASTYEAR(), DATESINPERIOD()
+
+Row Context & Filter Context: Apply logic at row level or filter level for nuanced insights.
+
+Reusability: Once defined, DAX measures can be reused across reports, making models cleaner and more efficient.
+
+Customization: Tailor calculations to match specific business rules or KPIs.
+
