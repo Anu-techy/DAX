@@ -2,7 +2,7 @@
 
 DAX is a formula language that helps in building complex calculations to  extract meaningful business insights.
 
-It gives you the ability to move beyond basic reports to deep, actionable insights.
+It gives you the ability to move beyond basic reports to deep actionable insights.
 
 It is used in Microsoft tools like Power BI, Adv Excel, Power Pivot, SQL Server Analysis Services (SSAS)
 
