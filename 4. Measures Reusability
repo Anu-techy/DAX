@@ -1,0 +1,20 @@
+Base measures
+
+Total Amount = SUM(shipments[Amunt])
+Shipment Count = countrows(shipments)
+Total Boxes = SUM(shipments[Boxes])
+
+Composite measures
+
+Which product has more boxes per shipment?
+
+          Boxes per Shipment = [Total Boxes] / [Shipment Count]
+
+This measure helps to find Boxes per Shipment  per product or per salesman
+
+          Amount per Shipment = DIVIDE([Total Amount],[Shipment Count])
+
+If we keep a slicer for regions we can find amount per shipment per region
+which helps in deeper analysis
+
+Measures can be reused further for deeper insightss
