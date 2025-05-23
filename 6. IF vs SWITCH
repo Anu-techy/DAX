@@ -1,0 +1,19 @@
+IF vs SWITCH
+
+IF (Single Condition) :
+
+    Sales Target = 2000000
+
+    Target Comparision = IF([Total Amount]>[Sales Target],"Yes","No")
+
+ SWITCH (Multiple Conditions) :
+
+    Multiple Target Comparison = 
+        
+        SWITCH(
+            TRUE(),
+            [Total Amount] > 2500000, "3 stars",
+            [Total Amount] > 2250000, "2 stars",
+            [Total Amount] > 2000000, "1 star",
+            [Total Amount] <= 2000000, "Failed"
+        )
