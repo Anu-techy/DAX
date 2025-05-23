@@ -1,0 +1,11 @@
+AGGREGATION FUNCTIONS
+
+SUM()               - Adds all numbers in a column
+AVERAGE()           - Returns the average of all numbers in a column
+MIN()               - Returns the smallest value of all numbers in a column
+MAX()               - Returns the largest value of all numbers in a column
+COUNTROWS()         - Counts rows in a table
+DISTINCTCOUNT()     - Counts distinct values in a column
+
+COUNT()             - Counts only numeric, non-blank values
+COUNTA()            - Counts all non-blank values — text, numbers, dates, etc. 
