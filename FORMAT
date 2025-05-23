@@ -1,0 +1,14 @@
+The FORMAT() function in DAX is very useful for converting values into readable text — 
+especially for display purposes like formatting Currency, Date, Date+Time, Decimal with commas, %age.
+
+Formatted Revenue = FORMAT(SUM(Sales[Amount]), "₹#,##0.00")                            o/p: ₹12,345.67
+Formatted Date = FORMAT('Date'[Date], "DD-MMM-YYYY")                                   o/p: 23-May-2025  
+Formatted Date with Time = FORMAT(Sales[OrderDate], "DD-MMM-YYYY hh:mm AM/PM")         o/p: 23-May-2025 02:15 PM
+Total Quantity = FORMAT(SUM(Sales[Quantity]), "#,##0.00")                              o/p: 123,456.78
+Profit pct = FORMAT([Profit Margin], "0.00%")                                          o/p: 12.50%
+
+These results are text values, not numbers — great for labels and display, but not for calculations or sorting.
+
+I use FORMAT() to present numbers and dates in a clean, readable way. 
+It’s perfect for labels, cards, and tooltips — 
+but since it returns text, I avoid using it in numeric logic or sorting."
