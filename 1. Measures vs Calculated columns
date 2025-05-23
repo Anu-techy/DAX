@@ -1,21 +1,43 @@
-Calculated Column : A calculated column is a new column added to a table using DAX. It is:
+=================================================================================================
+             Calculated Column            |                  Measure
+=================================================================================================
+A calculated column is a new column       |    A measure is a calculation
+added to a table using DAX                |    defined in DAX
+When you need to perform row level        |    When you require dynamic calculations
+calculations that remain static and       |    that adjust based on
+dont change with the context of the       |    user-interactions (responds dynamically 
+data.                                     |    to slicers, filters, and visuals)
+=================================================================================================
+For creating new categorization or        |   It is more efficient for 
+segmentation, grouping or slicing         |   aggregations and KPIs across visuals
+visuals that will be used consistently    |
+across reports.                           |
+=================================================================================================
+Computed during data loading or           |  It is evaluated on the fly during query execution
+data refresh and physical stored in       |  when used in a visual.
+the model.                                |
+=================================================================================================
+Purpose: for static row level             |  Purpose: for dynamic aggregated
+computations                              |  calculations
+=================================================================================================
+Example:                                  |  Example:
+When you want to tag each product as      |   When you want to show total sales on your dashboard,
+"High Margin" or "Standard" based on      |   and have it change dynamically based on:
+its margin ratio, and use that tag        |   Selected product, Selected region and
+in slicers or product filtering.          |   Selected date
+                                          |
+Margin Tag =                              |   Total Sales = SUM(Sales[Amount])
+IF(                                       |  
+(Product[Price] - Product[Cost]) / Product[Price] > 0.3,
+"High Margin", "Standard" )               |
+                                          |
+=================================================================================================
 
-Evaluated row by row (uses row context)
-
-Physically stored in the data model
-
-Useful for creating categorical fields for filtering, grouping, or slicing visuals
-
-Evaluated once during data refresh, but increases model size
 
 
-Measure : A measure is a calculation defined in DAX that:
 
-Is not stored in the model — evaluated only when used in a visual
 
-Is calculated at query time (on the fly)
 
-Uses filter context — responds dynamically to slicers, filters, and visuals
 
-Is more efficient for aggregations and KPIs
+
 
