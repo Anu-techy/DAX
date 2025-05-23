@@ -1,0 +1,26 @@
+                                       Basic Insights:
+
+Total Sales = SUM(Sales[Amount])
+
+Shows overall sales, but it doesn't tell why, how, or what to do about it.
+
+                                      Nuanced Insight
+
+Sales from New Customers Last Quarter =
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(
+        Customers,
+        Customers[FirstPurchaseDate] >= DATEADD(TODAY(), -1, QUARTER)
+    )
+)
+
+This tells you:
+
+How much of your revenue is driven by new customers
+
+Whether acquisition strategies are working
+
+That’s a nuanced insight — it helps you make smarter decisions, like reallocating marketing budget if new customer sales are low.
+
+
