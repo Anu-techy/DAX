@@ -1,0 +1,102 @@
+CALCULATE without explicit filter
+====================================
+        High Value Sales = CALCULATE(SUM(Sales[Amount]), Sales[UnitPrice] > 1000)
+                                           or
+        High Value Sales = CALCULATE(SUM(Sales[Amount]),FILTER(Sales, Sales[UnitPrice] > 1000))
+
+Both can work, the first one is internally converted by DAX into a filter context.
+You can skip explicit filter if you are applying a basic condition on a column which doesn't require a row context or aggregation.
+Some more Examples are:
+
+        Order Count = COUNT(table_orders[Bill_amt])       
+ 
+        Peter's Delivery = CALCULATE([Order Count], delivery_partner[Name]="Peter") 
+
+        Order Value = SUM(table_orders[Bill_amt])
+
+        Actual order value = CALCULATE([Oder Value], total_order[Deliverry_status]<>"Cancelled")
+
+CALCULATE with explicit filter
+===============================
+
+When Do You Use FILTER() Inside CALCULATE()?
+
+1. When You need row-by-row evaluation.
+2. When You are applying multiple conditions or a measure inside a condition.
+3. When you want to filter using aggregation (like SUMX, COUNTROWS, etc.).
+
+======================================================
+When you need to find good orders whose order value is above average order value
+
+Good Orders = 
+CALCULATE(
+          [Order Count],
+          FILTER(
+        table_orders,
+        [Actual Order Value] > AVERAGE(table_orders[Bill_amt]
+    )
+)
+
+[Order Count], [Actual Order Value] are meassures defined by using CALCULATE without filter.
+Here since we are using measures inside a condition, FILTER is used Explicity.
+================================================================
+
+When you need to find Total Sales for Customers with More Than 10 Orders
+
+Sales of Loyal Customers = 
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(
+        Customer,
+        CALCULATE(COUNTROWS(Sales)) > 10
+    )
+)
+
+Here, you're filtering customers based on their sales count, which requires row context, Hence FILTER is used Explicity.
+=================================================================
+
+When you need to find sales where profit margin > 20%
+
+High Margin Sales = 
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(
+        Sales,
+        DIVIDE(Sales[Amount] - Sales[Cost], Sales[Amount], 0) > 0.2
+    )
+)
+
+Here, you can’t write this using a simple filter, because it involves row-wise calculation of profit margin.
+===================================================================================================================
+
+When you need Sales amount of Top 3 Selling Products
+
+Top 3 Product Sales = 
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(
+        Product,
+        RANKX(
+            ALL(Product),
+            CALCULATE(SUM(Sales[Amount]))
+        ) <= 3
+    )
+)
+
+Here, RANKX needs to work over all products, and then FILTER() is used to limit the context to top 3.
+===================================================================================================================
+
+When you need Sales from Last 30 Days
+
+Last 30 Days Sales = 
+CALCULATE(
+    SUM(Sales[Amount]),
+    FILTER(
+        'Date',
+        'Date'[Date] >= TODAY() - 30 && 'Date'[Date] <= TODAY()
+    )
+)
+
+Here, FILTER() applies a rolling date range dynamically using TODAY().
+===================================================================================================================
+
