@@ -1,4 +1,5 @@
-# DAX  - Data Analysis Expression
+DAX  - Data Analysis Expression
+
 DAX is a formula language that helps you uncover deeper insights and meaningful information that go beyond basic summaries
 
 It gives you the ability to move beyond basic reports to deep actionable insights.
