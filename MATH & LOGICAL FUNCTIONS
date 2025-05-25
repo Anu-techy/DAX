@@ -1,0 +1,70 @@
+1. DIVIDE(x, y, 0) — Safe Division
+
+              Profit Margin = DIVIDE([Profit], [Revenue], 0)
+              If Revenue = 0, the result is 0 instead of an error.
+
+2. IF(condition, true_result, false_result)
+              
+              High Sales = IF(Sales[Quantity] > 10, "High", "Low")
+
+3. IFERROR(expression, alternateResult) — Error Handling
+
+              Safe Value = IFERROR(Sales[Amount] / Sales[Units], 0)
+              If Units is 0 or null, this avoids error and returns 0.
+
+4. SWITCH() — Replaces Nested IFs 
+
+              Rating = SWITCH(
+                          TRUE(),
+                          Sales[Quantity] > 20, "Excellent",
+                          Sales[Quantity] > 10, "Good",
+                          Sales[Quantity] > 0, "Low",
+                          "No Sales"
+                      )
+
+5. ISBLANK() — Check for Blank
+
+           Status = IF(ISBLANK(Sales[Amount]), "Missing", "Available")
+           Returns "Missing" if Amount is blank.
+
+
+6. AND
+
+HighSalesCustom = CALCULATE(
+    SUM(Sales[SalesAmount]),
+    FILTER(
+        Sales,
+        Sales[Quantity] > 10 && Sales[Region] <> "West"
+    )
+)
+
+7. NOT
+
+SalesExcludingSouth = CALCULATE(
+    SUM(Sales[SalesAmount]),
+    NOT(Sales[Region] = "South")
+)
+
+This removes rows where the region is South.
+
+8. OR
+
+Sales_QtyOrDiscount = CALCULATE(
+    SUM(Sales[SalesAmount]),
+    FILTER(
+        Sales,
+        Sales[Quantity] > 15 || Sales[Discount] > 0.2
+    )
+)
+
+
+
+
+
+
+
+
+
+
+
+
