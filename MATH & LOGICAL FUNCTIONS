@@ -57,12 +57,19 @@ Sales_QtyOrDiscount = CALCULATE(
     )
 )
 
+9. COALESCE()
 
+Returns the first non-blank value in a list of expressions
 
+            ActualOrPlanned = COALESCE(Sales[Actual], Sales[Planned], 0)
 
+            Returns Actual if it exists, otherwise Planned, else 0.
 
+10. SELECTEDVALUE() 
 
+Handles Single or No Selection
 
+                          SelectedCategory = SELECTEDVALUE(Products[Category], "No Category Selected")
 
 
 
